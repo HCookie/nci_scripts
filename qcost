@@ -55,9 +55,12 @@ def to_seconds(dt):
     f = list(map(int, dt.split(":")))
     if len(f) == 3:
         hr, m, s = f
-    if len(f) == 2:
+    elif len(f) == 2:
         hr, m = f
         s = 0.0
+    else:
+        print("Time string is invalid, must be of H:M or H:M:S form")
+        sys.exit()
     dt = timedelta(hours=hr, minutes=m, seconds=s)
 
     return dt.total_seconds()
